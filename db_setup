@@ -1,0 +1,62 @@
+CREATE DATABASE SOLOQ;
+
+CREATE TABLE games
+(
+    match_id       bigint NOT NULL,
+    region         varchar(4),
+    version        varchar(18),
+    result         int NOT NULL,
+    creation       int NOT NULL,
+    duration       int NOT NULL,
+    PRIMARY KEY(match_id, region)
+);
+
+CREATE TABLE bans
+(
+    match_id       bigint NOT NULL,
+    region         varchar(4),
+    is_blue        int NOT NULL,
+    ban1           varchar(32) NOT NULL,
+    ban2           varchar(32) NOT NULL,
+    ban3           varchar(32) NOT NULL,
+    ban4           varchar(32) NOT NULL,
+    ban5           varchar(32) NOT NULL,
+    PRIMARY KEY(match_id, region, is_blue)
+);
+
+CREATE TABLE lane_info
+(
+    match_id       bigint NOT NULL,
+    region         varchar(4),
+    is_blue        int NOT NULL,
+    role           varchar(3) NOT NULL,
+    player_name    varchar(32) NOT NULL,
+    champ          varchar(32) NOT NULL,
+    result         int NOT NULL,
+    PRIMARY KEY(match_id, region, is_blue, role)
+);
+
+CREATE TABLE stats
+(
+    match_id       bigint NOT NULL,
+    region         varchar(4),
+    is_blue        int NOT NULL,
+    role           varchar(3) NOT NULL,
+    champ          varchar(32) NOT NULL,
+    result         int NOT NULL,
+    kills          int NOT NULL,
+    deaths         int NOT NULL,
+    assists        int NOT NULL,
+    cc_score       int NOT NULL,
+    gold_spent     int NOT NULL,
+    damage         int NOT NULL,
+    heal           int NOT NULL,
+    tank           int NOT NULL,
+    cs10           float NOT NULL,
+    cs20           float NOT NULL,
+    g10            float NOT NULL,
+    g20            float NOT NULL,
+    xp10           float NOT NULL,
+    xp20           float NOT NULL,
+    PRIMARY KEY(match_id, region, is_blue, role)
+);
